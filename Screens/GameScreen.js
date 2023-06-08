@@ -57,7 +57,7 @@ let content=(
 if(width>500){
     content=(
         <>
-         <Title> Opponent`s Guess</Title>
+         <Title stylee={{margin:25}}> Opponent`s Guess</Title>
          <PrimaryButton onpress={() => nextGuessHandler('lower')}><Ionicons name="md-remove"/></PrimaryButton>
         <View style={{justifyContent:'center',alignItems:'center'}}>
              <NumberContainer> {currentGuess}</NumberContainer>
@@ -73,7 +73,6 @@ if(width>500){
         //this if to catch if user is lie or not 
         if((direction==='lower'&&currentGuess<userNumber)||(direction==='higer'&&currentGuess>userNumber)){
             Alert.alert('Cheating Message','Don`t be lie!!!',[{text:"Sorry",style:'default'}]);
-           console.log("lieing......");
             return;
         }
         if(direction==='lower'){
@@ -82,7 +81,7 @@ if(width>500){
         else{
             minBoundary=currentGuess+1;
         }
-        console.log(minBoundary,maxBoundary);
+
         const newRandamNumber= generateRandam(minBoundary,maxBoundary,currentGuess);
         setCurrentGuess(newRandamNumber);
         setGessRoundedNumber(prvGuessRounds=>[...prvGuessRounds,newRandamNumber,]);
@@ -118,7 +117,7 @@ const styles=StyleSheet.create({
     },
     listContainer:{
         //flex:1,
-        height:500,
+        height:800,
         padding:16,
      
     }

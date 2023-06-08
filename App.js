@@ -1,6 +1,6 @@
 
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet,View,ImageBackground, SafeAreaView } from 'react-native';
 import GameScreen from './Screens/GameScreen';
 import StartGameScreen from './Screens/StartGameScreen';
@@ -11,17 +11,27 @@ import{NavigationContainer}from'@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer'
 import Test from './Screens/Test';
 import Test2 from './Screens/Test2';
+import * as Font from 'expo-font';
 
 
 const Drawer=createDrawerNavigator();
 
 export default function App() {
 
-useFonts({
-    'Sofia-sans-italic':require('./assets/fonts/SofiaSansExtraCondensed-Italic-VariableFont_wght.ttf'),
-    'Sofia-sans':require('./assets/fonts/SofiaSansExtraCondensed-VariableFont_wght.ttf'),
-  });
+// useFonts({
+//     'Sofia-sans-italic':require('./assets/fonts/SofiaSansExtraCondensed-Italic-VariableFont_wght.ttf'),
+//     'Sofia-sans':require('./assets/fonts/SofiaSansExtraCondensed-VariableFont_wght.ttf'),
+//   });
 
+// const loadFonts = async () => {
+//   await Font.loadAsync({
+//     'Sofia-sans-italic': require('./assets/fonts/SofiaSansExtraCondensed-VariableFont_wght.ttf'),
+//   });
+// };
+
+// useEffect(() => {
+//   loadFonts();
+// }, []);
 
  const [userNumber,setUserNumber]=useState();
  const [gameIsOver,setGameIsOver]=useState(true);
@@ -46,20 +56,14 @@ function reStartGame(){
   screen=<GameScreen userNumber={userNumber} gameOverHandler={gameOverHandler}/>;
  }
 
- if(gameIsOver&&userNumber){
+ if(gameIsOver&&userNumber) {
     screen=<GameOverScreen useNumber={userNumber} reStartGame={reStartGame} roundedNumber={roundedNumber}/>
  }
 
 
   return (
     <>
-    {/* <NavigationContainer>
-      <Drawer.Navigator>
-          <Drawer.Screen name='Test' component={Test}/>
-          <Drawer.Screen name='Test2' component={Test2}/>
-      </Drawer.Navigator>
-    </NavigationContainer> */}
-    <StatusBar style='auto' animated={true} backgroundColor="#61dafb"/>
+    <StatusBar style='auto' animated={true} backgroundColor="#FFFF00"/>
     <View  style={styles.rootContainer}> 
        <ImageBackground source={require('./assets/images/backgroundimage.jpg')} style={styles.rootContainer} resizeMode='cover' imageStyle={styles.styleImage}>
         <SafeAreaView style={styles.rootContainer}>

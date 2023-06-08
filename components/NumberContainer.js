@@ -10,14 +10,15 @@ export default NumberContainer;
 const deviceWidth=Dimensions.get("window").width;
 const styles=StyleSheet.create({
     container:{
-        width:deviceWidth/3,
+        width:deviceWidth/2,
         borderWidth:4,
         borderColor:'yellow',
         padding:deviceWidth/50,
         borderRadius:8,
         margin:deviceWidth/25,
         alignItems:"center",
-        justifyContent:'center'
+        justifyContent:'center',
+
     },
     textStyle:{
         color:"white",
